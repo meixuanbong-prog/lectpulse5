@@ -29,7 +29,7 @@ function fetchCurrentLecturer() {
                     // 如果 Sheet 里填的是完整的网址则直接使用，否则匹配本地 images/ 文件夹下的图片
                     const photoSrc = currentLecturer.photo.startsWith("http") 
                         ? currentLecturer.photo 
-                        : `./gallery/${currentLecturer.photo}`;
+                        : `./Gallery/${currentLecturer.photo}`;
                     
                     photoImg.src = photoSrc;
                     photoImg.style.display = "block";
