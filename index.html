@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LectPulse - Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 顶部高级导航栏 (Navigation Bar) -->
+    <nav class="navbar">
+        <div class="nav-brand">LectPulse</div>
+        <div class="nav-links">
+            <a href="#lecturer-section">Lecturer</a>
+            <a href="#attendance-section">Attendance</a>
+            <a href="#request-section">Enquiry</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+            <!-- 学校 Logo 与名字居中容器 -->
+        <div class="school-header-container">
+            <!-- 学校 Logo 图片 -->
+            <!-- 请把 src 的地址替换为你实际的 Logo 图片路径 -->
+            <img src="https://upload.wikimedia.org/wikipedia/en/b/b2/Kolej_Matrikulasi_Johor_%28Logo%29.png" alt="School Logo" class="school-logo">
+    
+            <!-- 学校名字 -->
+            <h1 class="school-name">KOLEJ MATRIKULASI JOHOR</h1>
+        </div>
+
+
+        <!-- 1. Current Lecturer Section -->
+        <section id="lecturer-section" class="card">
+            <h2>Current Lecturer</h2>
+            <div class="lecturer-card">
+                <p class="card-label">LECTURER</p>
+                
+                <!-- 老师照片：展示在名字和科目下方 -->
+                <div class="lecturer-photo-container">
+                    <img id="lecturerPhoto" class="lecturer-photo" src="" alt="Lecturer Photo" style="display: none;">
+                </div>
+
+                <p id="lecturerName" class="lecturer-name">Loading...</p>
+                <p id="lecturerSubject" class="lecturer-subject">Subject: -</p>
+
+                <p class="card-label" style="margin-top: 16px;">CONSULTATION HOURS</p>
+                <p id="lecturerSchedule" class="lecturer-schedule">Loading...</p>
+
+                <button class="contact-btn" onclick="openWhatsApp()">
+                    💬 WhatsApp Lecturer
+                </button>
+            </div>
+        </section>
+
+        <!-- 2. Attendance Section (Matric No + Name + Class) -->
+        <section id="attendance-section" class="card">
+            <h2>Attendance</h2>
+            <p class="small-text">Check-in with your official details and location.</p>
+            
+            <div class="input-group">
+                <label for="matricNumber">Matric Number</label>
+                <input type="text" id="matricNumber" placeholder="e.g. MS2616116550">
+            </div>
+
+            <div class="input-group">
+                <label for="studentName">Full Name</label>
+                <input type="text" id="studentName" placeholder="e.g. BONG MEI XUAN">
+            </div>
+
+            <div class="input-group">
+                <label>CLASS</label>
+                <div class="custom-select-wrapper">
+                    <div class="custom-select" id="customSelect">
+                        <span class="selected-text" id="selectedText">Select your class</span>
+                        <div class="select-arrow">▼</div>
+                    </div>
+                    <div class="custom-options" id="customOptions">
+                        <div class="custom-option disabled" data-value="">Select your class</div>
+                        <div class="custom-option" data-value="f21">f21</div>
+                        <div class="custom-option" data-value="f22">f22</div>
+                        <div class="custom-option" data-value="f23">f23</div>
+                        <div class="custom-option" data-value="f24">f24</div>
+                        <div class="custom-option" data-value="f25">f25</div>
+                    </div>
+                    <!-- 隐藏的输入框，保证提交代码无需变动 -->
+                    <input type="hidden" id="studentClass" value="">
+                </div>
+            </div>
+            
+            <button class="submit-btn" onclick="submitAttendance()">
+                📍 Submit Attendance
+            </button>
+            
+            <p id="attendanceStatus" class="status-msg"></p>
+        </section>
+
+        <!-- 4. Form Request Section -->
+        <section id="request-section" class="card">
+            <h2>Any enquiry?</h2>
+            <p class="small-text">No challenge is too small. Tell us what you're struggling with so we can provide the assistance you need.</p>
+    
+            <div class="input-group">
+                <label for="lecturerRequest">Request Details</label>
+                <textarea id="lecturerRequest" rows="3" placeholder="Enter your question or request..."></textarea>
+            </div>
+    
+            <button class="request-btn" onclick="sendRequest()">
+                🚀 Send Request
+            </button>
+
+            <div id="requestStatus" class="status-msg"></div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

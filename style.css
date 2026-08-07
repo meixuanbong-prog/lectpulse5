@@ -1,0 +1,469 @@
+/* ===========================
+GLOBAL & RESET
+=========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    /* 经典铂金灰底色 */
+    background: #F3F4F6;
+    color: #1F2937;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    padding-top: 110px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 衬线字体用于标题，展现传统与权威 */
+h1, h2, .nav-brand, .lecturer-name {
+    font-family: "Didot", "Playfair Display", "Georgia", "Times New Roman", serif;
+}
+
+/* ===========================
+HIGH-END NAVIGATION BAR
+=========================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #0B132B; /* 顶级牛津深蓝 */
+    border-bottom: 3px solid #C5A059; /* 香槟金切割线 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-brand {
+    font-size: 22px;
+    font-weight: 700;
+    color: #C5A059; /* 香槟金 */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #E5E7EB;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #C5A059;
+}
+
+/* ===========================
+CONTAINER & CARDS
+=========================== */
+.container {
+    width: 100%;
+    max-width: 560px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+}
+
+.card {
+    background: #FFFFFF;
+    border-radius: 0; /* 绝对锐利的直角，顶级西装的利落感 */
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(11, 19, 43, 0.05);
+    border: 1px solid #E5E7EB;
+    border-top: 4px solid #0B132B; /* 顶部深蓝强调线 */
+}
+
+h2 {
+    color: #0B132B;
+    font-size: 22px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 12px;
+}
+
+.small-text {
+    color: #6B7280;
+    font-size: 13px;
+    margin-bottom: 24px;
+    margin-top: 16px;
+    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===========================
+INPUTS & FORMS
+=========================== */
+.input-group {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #0B132B;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    font-size: 14.5px;
+    background: #f9fafb;
+    color: #111827;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* ===========================
+   自定义下拉菜单 - 金色主题特效
+   =========================== */
+
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+    user-select: none;
+}
+
+/* 输入框外观 */
+.custom-select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    font-size: 14.5px;
+    background: #f9fafb;
+    color: #111827;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-select .selected-text {
+    color: #9ca3af;
+}
+
+.custom-select .selected-text.has-value {
+    color: #111827;
+}
+
+/* 鼠标悬浮 & 展开时的金色光晕 */
+/* 让 Class 下拉框的边框和光影与上方输入框完全一致 */
+.custom-select:hover,
+.custom-select-wrapper.open .custom-select {
+    border-color: #c5a059; /* 与上面输入框一致的金/铜色边框 */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 1px #c5a059; /* 移除外围模糊光晕，保持线条一致 */
+}
+
+.select-arrow {
+    font-size: 10px;
+    color: #6b7280;
+    transition: transform 0.3s ease;
+}
+
+.custom-select-wrapper.open .select-arrow {
+    transform: rotate(180deg);
+    color: #C5A059;
+}
+
+/* 下拉菜单浮层（金色外边框与阴影） */
+.custom-options {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1.5px solid #C5A059; /* 金色边框 */
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 0 15px rgba(212, 175, 55, 0.15);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.custom-select-wrapper.open .custom-options {
+    display: block;
+    animation: goldSelectDropdown 0.2s ease-in-out;
+}
+
+/* 每一个选项的默认样式 */
+.custom-option {
+    padding: 12px 18px;
+    font-size: 14.5px;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.custom-option.disabled {
+    color: #9ca3af;
+    cursor: default;
+    background: #f9fafb;
+}
+
+/* 🔥 鼠标移到选项上的金色特效（代替系统原本的蓝框） */
+.custom-option:not(.disabled):hover {
+    background-color: #d4af37; /* 浅金色背景 */
+    color: #854d0e;            /* 深琥珀/金色文字 */
+    font-weight: 600;
+    padding-left: 22px;        /* 微平移效果 */
+}
+
+/* 被选中的选项样式 */
+.custom-option.selected {
+    background-color: #C5A059;
+    color: #332600;
+    font-weight: bold;
+}
+
+@keyframes goldSelectDropdown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 针对未选择时的默认灰色提示词 */
+select:invalid, select option[value=""] {
+    color: #9ca3af;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #111827;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.05);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #C5A059;
+    background: #FFFFFF;
+    /* 聚焦时左侧金色强调，取代俗气的整圈光晕 */
+    box-shadow: inset 4px 0 0 #C5A059; 
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ===========================
+BUTTONS
+=========================== */
+button {
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 0; /* 绝对直角 */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+}
+
+.submit-btn, .request-btn {
+    width: 100%;
+    padding: 16px;
+    background: #0B132B; /* 牛津蓝 */
+    color: #FFFFFF;
+    font-size: 13px;
+    margin-top: 12px;
+    border: 1px solid #0B132B;
+}
+
+.submit-btn:hover, .request-btn:hover {
+    background: #C5A059;
+    border-color: #C5A059;
+    color: #0B132B;
+}
+
+.contact-btn {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    color: #0B132B;
+    border: 1px solid #0B132B;
+    font-size: 12px;
+}
+
+.contact-btn:hover {
+    background: #0B132B;
+    color: #FFFFFF;
+}
+
+/* Feedback Buttons */
+.feedback-btn-group {
+    display: flex;
+    gap: 16px;
+}
+
+.feedback {
+    flex: 1;
+    padding: 16px;
+    font-size: 12px;
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    color: #4B5563;
+}
+
+.feedback:hover {
+    border-color: #0B132B;
+    color: #0B132B;
+}
+
+/* 状态颜色改为克制的商务色调 */
+.feedback.active-green {
+    background: #0B132B !important;
+    color: #FFFFFF !important;
+    border-color: #0B132B !important;
+}
+
+.feedback.active-red {
+    background: #8B0000 !important; /* 沉稳的暗红色 */
+    color: #FFFFFF !important;
+    border-color: #8B0000 !important;
+}
+
+/* ===========================
+LECTURER CARD STYLE
+=========================== */
+.lecturer-card {
+    background: #F9FAFB;
+    border-left: 4px solid #C5A059; /* 左侧金色粗线，经典的报告排版 */
+    padding: 24px 32px;
+    text-align: left;
+    margin-top: 24px;
+}
+
+.card-label {
+    font-size: 10px;
+    color: #6B7280;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.lecturer-name {
+    font-size: 26px;
+    color: #0B132B;
+    margin-bottom: 4px;
+}
+
+.lecturer-subject {
+    font-size: 13px;
+    font-weight: 600;
+    color: #C5A059;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.lecturer-schedule {
+    font-size: 14px;
+    color: #4B5563;
+    margin-bottom: 24px;
+    white-space: pre-line;
+    line-height: 1.8;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.status-msg {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6B7280;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* ===========================
+MOBILE RESPONSIVE
+=========================== */
+@media(max-width: 600px) {
+    .nav-links {
+        display: none; 
+    }
+    body {
+        padding-top: 90px;
+    }
+    .card {
+        padding: 32px 24px;
+    }
+}
+
+.school-header-container {
+    grid-column: 1 / -1; /* 如果父级是 CSS Grid，强制跨越所有列 */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.school-logo {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto 10px auto; /* 左右 auto 强制居中 */
+    display: block;
+}
+
+.school-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin: 0;
+    text-align: center;
+}
+
+/* ===========================
+LECTURER PHOTO STYLE
+=========================== */
+.lecturer-photo-container {
+    margin: 12px 0 8px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.lecturer-photo {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #C5A059; /* 精致香槟金边框 */
+    box-shadow: 0 4px 12px rgba(11, 19, 43, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.lecturer-photo:hover {
+    transform: scale(1.02);
+}
