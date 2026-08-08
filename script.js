@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbx4dVmQnJtg8kxJWviKNiZjrws0f6-80Mhu0z7c4gtkfW9e6oRDHjgVGrNsnQ7H8dSiuA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwxEBE6uOSOTn8UqZuWLyh4AOQ4JwTzTrPvhVWmO_bcM_d1vGtKiqfekIu07QeVmsX7/exec";
 
 let currentLecturer = {
     id: "",
