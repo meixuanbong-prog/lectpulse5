@@ -475,3 +475,32 @@ LECTURER PHOTO STYLE
     height: 65px; /* ✅ 已修改：放大 Logo 的尺寸 */
     width: auto;
 }
+
+/* ===========================
+FOOTER (Regulated by PULSAR)
+=========================== */
+.site-footer {
+    text-align: center;
+    padding: 20px 20px 30px;
+    margin-top: auto; /* 确保它沉在最底部 */
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #6B7280; /* 配合你原本的 small-text 灰色，保持商务沉稳 */
+    font-size: 13px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.footer-logo {
+    height: 35px; /* 高度适中，不会抢了主视觉的风头 */
+    width: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(11, 19, 43, 0.08); /* 加上极其微弱的高级阴影 */
+}
